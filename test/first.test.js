@@ -1,4 +1,4 @@
-const server = require("./src/server");
+const server = require("../src/server");
 
 describe("server", () => {
   it(" test should run", () => {});

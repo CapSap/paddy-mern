@@ -4,8 +4,8 @@
   "description": "cnc app",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "server": "nodemon server.js",
+    "start": "node src/server.js",
+    "server": "nodemon src/server.js",
     "test": "jest --watchAll --verbose --coverage",
     "format": "prettier --write \"src/**/*.js\"",
     "lint": "eslint \"src/**/*.js\""
