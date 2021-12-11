@@ -2,6 +2,8 @@ const server = require("../src/server.js");
 
 describe("server", () => {
   it(" test should run", () => {});
+
+  it("connects to mongoDB", () => {});
 });
 
 // express server should serve react app
