@@ -1,9 +1,14 @@
 import "./App.css";
+import Entry from "./components/entry";
+import Incoming from "./components/incoming";
+import Todos from "./components/todos";
 
 function App() {
   return (
     <div className="App">
-      <p>hello</p>
+      <Entry />
+      <Todos />
+      <Incoming />
     </div>
   );
 }
