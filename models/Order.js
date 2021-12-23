@@ -6,6 +6,10 @@ const OrderSchema = new Schema({
     type: Number,
     required: true,
   },
+  orderStatus: {
+    type: Boolean,
+    required: true,
+  },
   date: {
     type: Date,
     default: Date.now,

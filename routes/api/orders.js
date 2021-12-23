@@ -14,6 +14,7 @@ router.post("/", (req, res) => {
   const newOrder = new Order({
     orderNumber: req.body.orderNumber,
     orderedItems: req.body.orderedItems,
+    orderStatus: req.body.orderStatus,
   });
 
   newOrder.save().then((order) => res.json(order));
