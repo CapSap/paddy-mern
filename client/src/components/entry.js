@@ -38,14 +38,14 @@ function Entry() {
           onSubmit(e);
         }}
       >
-        <label for="orderNumber">Order Number: </label>
+        <label htmlFor="orderNumber">Order Number: </label>
         <input
           type="text"
           id="orderNumber"
           value={orderInfo.orderNumber}
           onChange={(e) => handleChange(e)}
         ></input>
-        <label for="customer-name">Customer Name: </label>
+        <label htmlFor="customer-name">Customer Name: </label>
         <input
           type="text"
           id="customerName"
@@ -54,9 +54,10 @@ function Entry() {
             handleChange(e);
           }}
         ></input>
-        <label for="pickupStore">Pickup Location: </label>
+        <label htmlFor="pickupStore">Pickup Location: </label>
         <select
           id="pickupStore"
+          value={orderInfo.pickupStore}
           onChange={(e) => {
             handleChange(e);
           }}
@@ -71,16 +72,16 @@ function Entry() {
           <option value="Sydney">Sydney - 210</option>
         </select>
         <br />
-        <label for="items">Items needed: </label>
+        <label htmlFor="items">Items needed: </label>
         <textarea
           id="item"
           onChange={(e) => {
             handleOrderedItemsChange(e);
           }}
         />
-        <label for="sendingStore">Sending Location: </label>
+        <label htmlFor="sendingStore">Sending Location: </label>
         <select
-          id="pickupStore"
+          id="sendingStore"
           onChange={(e) => {
             handleOrderedItemsChange(e);
           }}
@@ -94,7 +95,7 @@ function Entry() {
           <option value="Ringwood">Ringwood - 319</option>
           <option value="Sydney">Sydney - 210</option>
         </select>
-        <label for="notes">Notes: </label>
+        <label htmlFor="notes">Notes: </label>
         <textarea
           id="notes"
           onChange={(e) => {
