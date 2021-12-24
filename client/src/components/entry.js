@@ -1,23 +1,34 @@
 import React, { useState } from "react";
 
 function Entry() {
-  const [orderInfo, setOrderInfo] = useState({});
+  const [orderInfo, setOrderInfo] = useState({
+    orderStatus: "waiting to be sent",
+  });
 
   function handleChange(e) {
     let name = e.target.id;
     let value = e.target.value;
-    console.log(e.target.name);
     setOrderInfo({
       ...orderInfo,
       [name]: value,
     });
   }
 
+  function handleOrderedItemsChange(e) {
+    let name = e.target.id;
+    let value = e.target.value;
+    setOrderInfo({
+      ...orderInfo,
+      orderedItems: {
+        ...orderInfo.orderedItems,
+        [name]: e.target.value,
+      },
+    });
+  }
+
   function onSubmit(e) {
     e.preventDefault();
-    for (let i = 0; i < e.target.length - 1; i++) {
-      console.log("button pressed " + e.target[i].value);
-    }
+    console.log(orderInfo);
   }
 
   return (
@@ -43,9 +54,56 @@ function Entry() {
             handleChange(e);
           }}
         ></input>
-        <label for="stores">Items Needed:</label>
+        <label for="pickupStore">Pickup Location: </label>
+        <select
+          id="pickupStore"
+          onChange={(e) => {
+            handleChange(e);
+          }}
+        >
+          <option value="Canberra">Canberra - 213</option>
+          <option value="Fortitude Valley">Fortitude Valley - 416</option>
+          <option value="Hobart">Hobart - 710</option>
+          <option value="Melbourne">Melbourne - 314</option>
+          <option value="Parramatta">Parramatta - 208</option>
+          <option value="Perth">Perth - 615</option>
+          <option value="Ringwood">Ringwood - 319</option>
+          <option value="Sydney">Sydney - 210</option>
+        </select>
+        <br />
+        <label for="items">Items needed: </label>
+        <textarea
+          id="item"
+          onChange={(e) => {
+            handleOrderedItemsChange(e);
+          }}
+        />
+        <label for="sendingStore">Sending Location: </label>
+        <select
+          id="pickupStore"
+          onChange={(e) => {
+            handleOrderedItemsChange(e);
+          }}
+        >
+          <option value="Canberra">Canberra - 213</option>
+          <option value="Fortitude Valley">Fortitude Valley - 416</option>
+          <option value="Hobart">Hobart - 710</option>
+          <option value="Melbourne">Melbourne - 314</option>
+          <option value="Parramatta">Parramatta - 208</option>
+          <option value="Perth">Perth - 615</option>
+          <option value="Ringwood">Ringwood - 319</option>
+          <option value="Sydney">Sydney - 210</option>
+        </select>
+        <label for="notes">Notes: </label>
+        <textarea
+          id="notes"
+          onChange={(e) => {
+            handleChange(e);
+          }}
+        />
         <button type="submit">Send</button>
       </form>
+      Order Status: {orderInfo.orderStatus}
     </div>
   );
 }
