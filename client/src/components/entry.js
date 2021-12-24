@@ -1,6 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Entry() {
+  const [orderInfo, setOrderInfo] = useState({});
+
+  function handleChange(e) {
+    let name = e.target.id;
+    let value = e.target.value;
+    console.log(e.target.name);
+    setOrderInfo({
+      ...orderInfo,
+      [name]: value,
+    });
+  }
+
   function onSubmit(e) {
     e.preventDefault();
     for (let i = 0; i < e.target.length - 1; i++) {
@@ -15,10 +27,22 @@ function Entry() {
           onSubmit(e);
         }}
       >
-        <label for="order-number">Order Number: </label>
-        <input type="text" id="order-number" value="1234"></input>
+        <label for="orderNumber">Order Number: </label>
+        <input
+          type="text"
+          id="orderNumber"
+          value={orderInfo.orderNumber}
+          onChange={(e) => handleChange(e)}
+        ></input>
         <label for="customer-name">Customer Name: </label>
-        <input type="text" id="customer-name" value="customer name"></input>
+        <input
+          type="text"
+          id="customerName"
+          value={orderInfo.customerName}
+          onChange={(e) => {
+            handleChange(e);
+          }}
+        ></input>
         <label for="stores">Items Needed:</label>
         <button type="submit">Send</button>
       </form>
