@@ -13,15 +13,18 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
   const newOrder = new Order({
     orderNumber: req.body.orderNumber,
-    orderedItems: req.body.orderedItems,
     orderStatus: req.body.orderStatus,
+    customerName: req.body.customerName,
+    pickupLocation: req.body.pickupLocation,
+    notes: req.body.notes,
+    orderedItems: req.body.orderedItems,
   });
 
   newOrder.save().then((order) => res.json(order));
 });
 
 // delete
-// route api/items/:id
+// route api/orders/:id
 router.delete("/:id", (req, res) => {
   Order.findById(req.params.id)
     .then((order) => order.remove().then(() => res.json({ sucess: true })))
