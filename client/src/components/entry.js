@@ -2,21 +2,25 @@ import React, { useState } from "react";
 
 function Entry() {
   const [orderInfo, setOrderInfo] = useState({
+    orderNumber: "",
+    customerName: "",
     orderStatus: "waiting to be sent",
+    pickupLocation: "Canberra",
+    orderedItems: {
+      sendingStore: "Canberra",
+    },
   });
 
   function handleChange(e) {
     let name = e.target.id;
-    let value = e.target.value;
     setOrderInfo({
       ...orderInfo,
-      [name]: value,
+      [name]: e.target.value,
     });
   }
 
   function handleOrderedItemsChange(e) {
     let name = e.target.id;
-    let value = e.target.value;
     setOrderInfo({
       ...orderInfo,
       orderedItems: {
@@ -28,16 +32,17 @@ function Entry() {
 
   function onSubmit(e) {
     e.preventDefault();
-    console.log(orderInfo);
+    console.log(JSON.stringify(orderInfo));
+    fetch("/api/orders", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(orderInfo),
+    });
   }
 
   return (
     <div>
-      <form
-        onSubmit={(e) => {
-          onSubmit(e);
-        }}
-      >
+      <form method="POST" action="/" onSubmit={(e) => onSubmit(e)}>
         <label htmlFor="orderNumber">Order Number: </label>
         <input
           type="text"
@@ -54,10 +59,10 @@ function Entry() {
             handleChange(e);
           }}
         ></input>
-        <label htmlFor="pickupStore">Pickup Location: </label>
+        <label htmlFor="pickupLocation">Pickup Location: </label>
         <select
-          id="pickupStore"
-          value={orderInfo.pickupStore}
+          id="pickupLocation"
+          value={orderInfo.pickupLocation}
           onChange={(e) => {
             handleChange(e);
           }}
@@ -98,6 +103,7 @@ function Entry() {
         <label htmlFor="notes">Notes: </label>
         <textarea
           id="notes"
+          value={orderInfo.notes}
           onChange={(e) => {
             handleChange(e);
           }}

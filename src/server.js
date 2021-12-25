@@ -1,11 +1,14 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 
 const orders = require("../routes/api/orders");
 
 const app = express();
 
+//cors
+app.use(cors());
 // bodyparser middleware
 app.use(bodyParser.json());
 

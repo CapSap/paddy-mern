@@ -14,7 +14,7 @@ const OrderSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-  pickUpLocation: {
+  pickupLocation: {
     type: String,
     required: true,
   },
