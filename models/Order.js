@@ -25,6 +25,9 @@ const OrderSchema = new Schema({
   orderedItems: {
     type: Array,
   },
+  fourHour: {
+    type: Boolean,
+  },
 });
 
 module.exports = Order = mongoose.model("order", OrderSchema);

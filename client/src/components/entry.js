@@ -9,6 +9,7 @@ function Entry() {
     orderedItems: {
       sendingStore: "Canberra",
     },
+    fourHour: false,
   });
 
   function handleChange(e) {
@@ -100,6 +101,7 @@ function Entry() {
           <option value="Ringwood">Ringwood - 319</option>
           <option value="Sydney">Sydney - 210</option>
         </select>
+
         <label htmlFor="notes">Notes: </label>
         <textarea
           id="notes"
