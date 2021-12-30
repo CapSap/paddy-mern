@@ -51,7 +51,7 @@ function Entry() {
           value={orderInfo.orderNumber}
           onChange={(e) => handleChange(e)}
         ></input>
-        <label htmlFor="customer-name">Customer Name: </label>
+        <label htmlFor="customerName">Customer Name: </label>
         <input
           type="text"
           id="customerName"

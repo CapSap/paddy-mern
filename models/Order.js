@@ -6,6 +6,10 @@ const OrderSchema = new Schema({
     type: Number,
     required: true,
   },
+  customerName: {
+    type: String,
+    required: true,
+  },
   orderStatus: {
     type: String,
     required: true,
