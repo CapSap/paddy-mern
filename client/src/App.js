@@ -4,13 +4,14 @@ import "./App.css";
 import Entry from "./components/entry";
 import Incoming from "./components/incoming";
 import Todos from "./components/todos";
+import StorePicker from "./components/storePicker";
 
 function App() {
   const [fromDB, setFromDB] = useState("");
 
   const [store, setStore] = useState();
 
-  function handleChange(e) {
+  function changeStore(e) {
     setStore(e.target.value);
   }
 
@@ -24,23 +25,7 @@ function App() {
   return (
     <div className="App">
       <Entry />
-      <label htmlFor="chooseStore">Your store location: </label>
-      <select
-        id="chooseStore"
-        value={store}
-        onChange={(e) => {
-          handleChange(e);
-        }}
-      >
-        <option value="Canberra">Canberra - 213</option>
-        <option value="Fortitude Valley">Fortitude Valley - 416</option>
-        <option value="Hobart">Hobart - 710</option>
-        <option value="Melbourne">Melbourne - 314</option>
-        <option value="Parramatta">Parramatta - 208</option>
-        <option value="Perth">Perth - 615</option>
-        <option value="Ringwood">Ringwood - 319</option>
-        <option value="Sydney">Sydney - 210</option>
-      </select>
+      <StorePicker store={store} changeStore={changeStore} />
       <Todos />
       <Incoming fromDB={fromDB} />
     </div>
