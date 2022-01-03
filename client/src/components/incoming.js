@@ -1,15 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function Incoming() {
-  const [fromDB, setFromDB] = useState("");
-
-  useEffect(() => {
-    fetch("/api/orders", { method: "GET", redirect: "follow" })
-      .then((res) => res.json())
-      .then((data) => setFromDB(data))
-      .catch((error) => console.log("error", error));
-  }, []);
-
+function Incoming({ fromDB }) {
   return (
     <div>
       Orders to be picked up from your store:

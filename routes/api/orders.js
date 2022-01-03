@@ -18,6 +18,7 @@ router.post("/", (req, res) => {
     pickupLocation: req.body.pickupLocation,
     notes: req.body.notes,
     orderedItems: req.body.orderedItems,
+    fourHour: req.body.fourHour,
   });
 
   newOrder.save().then((order) => res.json(order));
